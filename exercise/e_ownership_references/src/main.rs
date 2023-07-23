@@ -14,25 +14,50 @@ fn main() {
     // code with `cargo run apple` and `cargo run apples'.  Hint: use `.ends_with("s")` on the
     // String reference
     //
-    //inspect(&arg);
+    inspect(&arg);
+    fn inspect(arg_ins : &String) {
+        // let plural: bool = arg_ins.ends_with("s");
+        if arg_ins.ends_with("s") {
+            println!("The {} is plural", arg_ins);
+        } else {
+            println!("The {} is singular", arg_ins);
+        }
+    }
+
 
     // 2. Write a function `change` that takes a *mutable* reference to a String and adds an "s" to
     // the String if it doesn't already end with "s". Then uncomment and run the code below with
     // `cargo run apple`.  Hint: use `.push_str("s")` on the mutable String reference to add an "s".
     //
-    //change(&mut arg);
-    //println!("I have many {}", arg);
+    change(&mut arg);
+    println!("I have many {}", arg);
+
+    fn change(arg_chng : &mut String) {
+        // let plural: bool = arg_chng.ends_with("s");
+        if !arg_chng.ends_with("s") {
+            arg_chng.push_str("s");
+        }
+    }
 
     // 3. Write a function `eat` that accepts ownership of (consumes) a String and returns a bool
     // indicating whether or not the String both starts with a "b" AND contains an "a".
     // Hint 1: use `.starts_with("b")` and `.contains("a")`
     // Hint 2: `&&` is the boolean "AND" operator
     //
-    //if eat(arg) {
-    //    println!("Might be bananas");
-    //} else {
-    //    println!("Not bananas");
-    //}
+    if eat(arg) {
+       println!("Might be bananas");
+    } else {
+       println!("Not bananas");
+    }
+
+    fn eat(arg_eat: String) -> bool {
+        // if arg_eat.starts_with("b")&& arg_eat.contains("a") {
+        //     true
+        // } else {
+        //     false
+        // }
+        arg_eat.starts_with("b")&& arg_eat.contains("a")
+    }
 
     // Try running this program with "boat", "banana", and "grapes" as the arguments :-)
 
@@ -40,11 +65,14 @@ fn main() {
     // ignores what is in the string and replaces the contents of the string with the String
     // "sparkly". Then uncomment the code below.
     //
+    fn bedazzle(arg_bedz: &mut String) {
+        (*arg_bedz) = "metan".to_string();
+    }
     // Hint: You will need to dereference the mutable reference in order to assign it a
     // new value.
     //
-    // let mut material = "mud".to_string();
-    // println!("This material is just `{}`.", material);
-    // bedazzle(&mut material);
-    // println!("Wow! Now the material is `{}`!", material);
+    let mut material = "mud".to_string();
+    println!("This material is just `{}`.", material);
+    bedazzle(&mut material);
+    println!("Wow! Now the material is `{}`!", material);
 }
