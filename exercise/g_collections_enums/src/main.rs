@@ -9,7 +9,7 @@
 // - `Miss`
 //
 // You will need to complete 1b as well before you will be able to run this program successfully.
-
+#[derive(Debug)]
 enum Shot {
     Bullseye,
     Hit(f64),
@@ -64,6 +64,7 @@ fn main() {
     // 3. Finally, loop through each shot in shots and add its points to total
 
     println!("Final point total is: {}", total);
+    println!("{:?}", shots);
 }
 
 // A coordinate of where an Arrow hit
